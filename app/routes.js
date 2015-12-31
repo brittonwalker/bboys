@@ -1,4 +1,4 @@
-module.exports = function(app, passort) {
+module.exports = function(app, passport) {
 
   // HOME PAGE (with Login Links) =======
   app.get('/', function(req, res) {
@@ -7,7 +7,7 @@ module.exports = function(app, passort) {
 
   // LOGIN ============================
   // show the login form
-  app.get('login', function(req, res) {
+  app.get('/login', function(req, res) {
     //render page and pass any flash data
     res.render('login.hbs', {
       message: req.flash('loginMessage')
@@ -15,7 +15,11 @@ module.exports = function(app, passort) {
   })
 
   //process the login form
-  //app.post('/login', do all passport stuff here);
+  app.post('/login', passport.authenticate('local-login', {
+      successRedirect : '/profile', // redirect to the secure profile section
+      failureRedirect : '/login', // redirect back to the signup page if there is an error
+      failureFlash : true // allow flash messages
+  }));
 
   // SIGNUP ========================
   // show the signup form
@@ -28,7 +32,11 @@ module.exports = function(app, passort) {
   });
 
   // process the sign up form
-  // app.post('/signup', do all our passport stuff here;)
+  app.post('/signup', passport.authenticate('local-signup', {
+      successRedirect : '/profile', // redirect to the secure profile section
+      failureRedirect : '/signup', // redirect back to the signup page if there is an error
+      failureFlash : true // allow flash messages
+  }));
 
   // PROFILE SECTION ==========================
   // we will want this protected so you have to be logged in to visit

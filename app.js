@@ -15,7 +15,8 @@ var configDB = require('./config/database.js');
 // configuration ==================================
 mongoose.connect(configDB.url);
 
-// require('./config/passport')(passport); // pass passport for configuration
+require('./config/passport')(passport); // pass passport for configuration
+// require('./config/passport')
 
 // set up the express application =================
 app.use(morgan('dev')); // log every request to the console
@@ -32,7 +33,7 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 // routes ==========================================
 // require('./app/routes.js')(app, passport);
-require('./app/routes.js');
+require('./app/routes.js')(app, passport);
 
 
 // launch ==========================================
