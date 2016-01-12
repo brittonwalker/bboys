@@ -1,3 +1,5 @@
+var Location     = require('./models/location');
+
 module.exports = function(app, passport) {
 
   // HOME PAGE (with Login Links) =======
@@ -54,6 +56,7 @@ module.exports = function(app, passport) {
   });
 
 };
+
 
 // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {
