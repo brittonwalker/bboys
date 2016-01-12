@@ -10,7 +10,7 @@ $(document).ready(function() {
   }).addTo(myMap);
 
   var marker = L.marker([40.7305991, -73.9865812]).addTo(myMap);
-  marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+  marker.bindPopup("<b>Hello world!</b><br>I am a popup.");
 
   var getInfo = function(){
     var url = 'http://localhost:3000/api/locations'
@@ -23,7 +23,7 @@ $(document).ready(function() {
     for (var i = 0; i < res.length; i++) {
       console.log(res[i]);
       var mark = L.marker([res[i].lat, res[i].long]).addTo(myMap);
-      mark.bindPopup("<b>" + res[i].name + "</b><br>").openPopup();
+      mark.bindPopup("<b>" + res[i].name + "</b><br>");
     }
   })
   };

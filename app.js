@@ -42,6 +42,7 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 require('./app/routes.js')(app, passport);
 var router = express.Router();
 
+// LOCATION ROUTES
 var Location     = require('./app/models/location');
 
 router.use(function(req, res, next) {
@@ -56,12 +57,12 @@ router.get('/', function(req, res) {
 
 router.route('/locations')
 
-    // create a bear (accessed at POST http://localhost:8080/api/bears)
+    // create a location (accessed at POST http://localhost:8080/api/locations)
     .post(function(req, res) {
 
-        var location = new Location({ name: req.body.name, address: req.body.address, lat: req.body.lat, long: req.body.long});      // create a new instance of the Bear model
+        var location = new Location({ name: req.body.name, address: req.body.address, lat: req.body.lat, long: req.body.long});      // create a new instance of the Location model
 
-        // save the bear and check for errors
+        // save the location and check for errors
         location.save(function(err) {
             if (err)
                 res.send(err);
@@ -92,18 +93,18 @@ router.route('/locations')
             });
         })
 
-        // update the bear with this id (accessed at PUT http://localhost:8080/api/bears/:bear_id)
+        // update the location with this id (accessed at PUT http://localhost:8080/api/locations/:location_id)
         .put(function(req, res) {
 
-            // use our bear model to find the bear we want
+            // use our location model to find the location we want
             Location.findById(req.params.location_id, function(err, location) {
 
                 if (err)
                     res.send(err);
 
-                location.name = req.body.name;  // update the bears info
+                location.name = req.body.name;  // update the locations info
 
-                // save the bear
+                // save the location
                 location.save(function(err) {
                     if (err)
                         res.send(err);
@@ -124,6 +125,39 @@ router.route('/locations')
             });
         });
 
+    // POST ROUTES
+    var Post     = require('./app/models/post');
+
+    router.get('/locations/:id/posts', function(req, res) {
+      Location.find({_id: req.params.id}).then(function(locations){
+        res.json(locations);
+      })
+    });
+
+    router.post('/locations/:id/posts', function(req, res) {
+        console.log('antyhign');
+        Location.findOne({_id: req.params.id}).then(function(location){
+          console.log(location);
+          console.log(req.body.name);
+          var post = new Post({ video_url: req.body.video_url, name: req.body.name, description: req.body.description });
+          console.log(post);
+          location.posts.push(post);
+          console.log(location);
+          location.save(function(err) {
+            if (err)
+                res.send(err);
+
+            res.json({ message: 'Post created!' });
+          });
+          // var post = ;
+        })
+
+     // create a new instance of the Location model
+
+        // save the location and check for errors
+
+
+    })
 
 
 
