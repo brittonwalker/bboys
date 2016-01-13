@@ -1,0 +1,12 @@
+{
+    "name": "starter-node-angular",
+    "version": "1.0.0",
+    "dependencies": {
+        "animate.css": "latest",
+        "angular": "latest",
+        "angular-route": "latest",
+        "normalize.css": "latest",
+        "bourbon": "latest",
+        "jQuery": "latest"
+    }
+}
