@@ -135,34 +135,28 @@ router.route('/locations')
     });
 
     router.post('/locations/:id/posts', function(req, res) {
-        console.log('antyhign');
         Location.findOne({_id: req.params.id}).then(function(location){
-          console.log(location);
-          console.log(req.body.name);
           var post = new Post({ video_url: req.body.video_url, name: req.body.name, description: req.body.description });
-          console.log(post);
           location.posts.push(post);
-          console.log(location);
           location.save(function(err) {
             if (err)
                 res.send(err);
 
             res.json({ message: 'Post created!' });
           });
-          // var post = ;
         })
+    });
 
-     // create a new instance of the Location model
-
-        // save the location and check for errors
-
-
+    router.get('/locations/:id/posts/:id', function(req, res) {
+      Location.find({_id: req.params.id}).then(function(locations){
+        res.json(locations);
+      })
     })
 
 
 
 app.use('/api', router);
-
+app.use(express.static(__dirname + '/public'));
 //routes that end in /locations
 
 // launch ==========================================
