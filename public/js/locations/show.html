@@ -2,3 +2,39 @@
   <h1>{{ LocationsShowViewModel.myData.name }}</h1>
   <h3>{{ LocationsShowViewModel.myData.address }}</h3>
 </div>
+
+<div ng-repeat="posts in LocationsShowViewModel.myData.posts">
+  <h2>{{ posts.name }}</h2>
+  <p>{{ posts.video_url }}</p>
+  <p>{{ posts.description }}</p>
+
+</div>
+
+<p>Post to {{ LocationsShowViewModel.myData.name }}</p>
+
+<div ng-show="message">{{ message }}</div>
+
+<form ng-submit="processForm()">
+  <div>
+    <label>Name</label>
+    <input type="text" name="name" placeholder="name of video" ng-model="formData.name">
+  </div>
+
+  <div>
+  <label>Video Link</label>
+  <input type="text" name="video_url" placeholder="video link" ng-model="formData.video_url">
+  </div>
+
+  <div>
+  <label>Description</label>
+  <input type="text" name="description" placeholder="description of video" ng-model="formData.description">
+  </div>
+  <p ng-show="errorName">{{ errorName }}</p>
+
+  <button type="submit">Submit!</button>
+
+</form>
+
+<pre>
+  {{ formData }}
+</pre>
