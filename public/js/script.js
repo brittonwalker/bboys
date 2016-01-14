@@ -11,23 +11,6 @@ $(document).ready(function() {
     accessToken: 'pk.eyJ1IjoiYnJpdHRvbndhbGtlciIsImEiOiJjaWozOG16d3IwMDN0dW1rcDU3OXJxeWEzIn0.yfclBrxnvpCzJZkZtLYQdg'
   }).addTo(myMap);
 
-  // place markers from database
-  var getInfo = function() {
-    var url = 'http://localhost:3000/api/locations'
-    $.ajax({
-      url: url,
-      type: "GET",
-      dataType: 'json'
-    }).done(function(res) {
-      for (var i = 0; i < res.length; i++) {
-        var mark = L.marker([res[i].lat, res[i].long]).addTo(myMap);
-        mark.bindPopup("<b>" + res[i].name + "</b><br>");
-      }
-    })
-  };
-
-  getInfo();
-
   $("#submit").click(function() {
     event.preventDefault();
 
@@ -39,16 +22,16 @@ $(document).ready(function() {
       type: "GET",
       dataType: "json"
     }).done(function(res) {
-      // console.log(res.results);
-      // if (res.results && res.results.length > 0){
-      //   var display = '<option value="">Locations matching "' + keyword +'"...</option>';
-      //
-      //   $.each(res.results, function(i, response){
-      //     console.log(response);
-      //     display += ['<option value="">', response.components.city + ', ' + response.components.state, ', ', response.components.country + '</option>'].join('');
-      //   })
-      //   $('#location-select').show().html(display);
-      // }
+      console.log(res.results);
+      if (res.results && res.results.length > 0) {
+        var display = '<option value="">Locations matching "' + keyword + '"...</option>';
+
+        $.each(res.results, function(i, response) {
+          console.log(response);
+          display += ['<option value="">', response.components.city + ', ' + response.components.state, ', ', response.components.country + '</option>'].join('');
+        })
+        $('#location-select').show().html(display);
+      }
       var response = res.results[0];
       var lat = response.geometry.lat;
       var lng = response.geometry.lng;
@@ -72,7 +55,45 @@ $(document).ready(function() {
     })
   });
 
-  $('#location-select').on('change', function(){
+  // place markers from database
+  var getInfo = function() {
+    var url = 'http://localhost:3000/api/locations'
+    $.ajax({
+      url: url,
+      type: "GET",
+      dataType: 'json'
+    }).done(function(res) {
+      console.log(res);
+      for (var i = 0; i < res.length; i++) {
+        var mark = L.marker([res[i].lat, res[i].long]).addTo(myMap);
+        mark.bindPopup("<b>" + "<a href='/api/locations/" + res[i]._id + "' >" + res[i].name + "</a></b><br>");
+      }
+    })
+  };
+
+  $('#form').click(function(event){
+    console.log('clicked');
+    var formData = {
+      'name'    : $('input[name=name]').val(),
+      'video_url' : $('input[name=video_url]').val(),
+      'description' : $('input[name=description]').val()
+    };
+
+    $.ajax({
+      type : 'POST',
+      url: 'http://localhost:3000/api/locations/5696ce1876a82787d519c5c1/posts',
+      data : formData,
+      dataType : 'json',
+      encode: true
+    })
+      .done(function(data) {
+        console.log(data);
+      });
+      // event.preventDefault();
+  });
+  getInfo();
+
+  $('#location-select').on('change', function() {
     console.log(this.text);
   })
 });

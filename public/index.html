@@ -43,11 +43,24 @@
 
   <div ng-controller="MyController as controller">
     <div ng-repeat="data in controller.mydata | filter: search">
-      <h1>{{ data.name }}</h1>
+      <h1><a href="/api/locations/{{data._id}}">{{ data.name }}</a></h1>
         <h3>{{ data.address }}</h3>
-        <p ng-repeat="posts in data.posts">{{ posts.video_url }}</p>
+        <div ng-repeat="posts in data.posts">{{posts.video_url}}
+          <!-- <form>
+            <div>
+              <label>Name</label>
+              <input type="text" name="name" placeholder="Name of Video">
+              <label>Video URL</label>
+              <input type="text" name="video_url" placeholder="www.youtube.com/sickvideo">
+              <label>Description</label>
+              <input type="text" name="description" placeholder="heres a little description of this video....">
+            </div>
+            <button type="submit" id="form">Submit</button>
+          </form> -->
+        </div>
    </div>
   </div>
+
 
 </body>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
