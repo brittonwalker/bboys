@@ -63,7 +63,6 @@ $(document).ready(function() {
       type: "GET",
       dataType: 'json'
     }).done(function(res) {
-      console.log(res);
       for (var i = 0; i < res.length; i++) {
         var mark = L.marker([res[i].lat, res[i].long]).addTo(myMap);
         mark.bindPopup("<b>" + "<a href='/api/locations/" + res[i]._id + "' >" + res[i].name + "</a></b><br>");
