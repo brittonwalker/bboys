@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+  console.log('working');
   // set map default view
   var myMap = L.map("map").setView([40.7305991, -73.9865812], 13);
 
@@ -15,6 +15,7 @@ $(document).ready(function() {
     event.preventDefault();
 
     var keyword = $("input").val();
+    console.log(keyword);
     var url = 'http://api.opencagedata.com/geocode/v1/json?q=' + keyword + '&key=9856c49448b1c927e9fd4080d7c55fad';
 
     $.ajax({
