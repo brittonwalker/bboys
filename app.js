@@ -15,8 +15,8 @@ var configDB = require('./config/database.js');
 
 
 // configuration ==================================
-mongoose.connect(configDB.url);
-
+// mongoose.connect(configDB.url);
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/skate');
 require('./config/passport')(passport); // pass passport for configuration
 // require('./config/passport')
 
@@ -152,13 +152,13 @@ router.route('/locations')
       })
     })
 
-mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/news');
+
 
 app.use('/api', router);
 app.use(express.static(__dirname + '/public'));
 //routes that end in /locations
 
 // launch ==========================================
-app.listen(3000, function(){
+app.listen(process.env.PORT || 3000, function(){
   console.log('Listening on localhost 3000');
 })
