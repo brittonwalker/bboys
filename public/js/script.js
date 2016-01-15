@@ -71,29 +71,34 @@ $(document).ready(function() {
     })
   };
 
-  $('#form').click(function(event){
+  $('#form').click(function(event) {
     console.log('clicked');
     var formData = {
-      'name'    : $('input[name=name]').val(),
-      'video_url' : $('input[name=video_url]').val(),
-      'description' : $('input[name=description]').val()
+      'name': $('input[name=name]').val(),
+      'video_url': $('input[name=video_url]').val(),
+      'description': $('input[name=description]').val()
     };
 
     $.ajax({
-      type : 'POST',
-      url: 'http://localhost:3000/api/locations/5696ce1876a82787d519c5c1/posts',
-      data : formData,
-      dataType : 'json',
-      encode: true
-    })
+        type: 'POST',
+        url: 'http://localhost:3000/api/locations/5696ce1876a82787d519c5c1/posts',
+        data: formData,
+        dataType: 'json',
+        encode: true
+      })
       .done(function(data) {
         console.log(data);
       });
-      // event.preventDefault();
+    // event.preventDefault();
   });
   getInfo();
 
   $('#location-select').on('change', function() {
     console.log(this.text);
   })
+
+  myMap.scrollWheelZoom.disable();
+  myMap.touchZoom.disable();
+
+
 });
