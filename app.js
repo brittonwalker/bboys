@@ -152,7 +152,7 @@ router.route('/locations')
       })
     })
 
-
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/news');
 
 app.use('/api', router);
 app.use(express.static(__dirname + '/public'));
