@@ -5,12 +5,13 @@
   </div>
 
   <div ng-repeat="posts in LocationsShowViewModel.myData.posts">
-    <h2>{{ posts.name }}</h2>
-    <h3>{{posts.embeded_url}}
-      <h3>
-        <iframe width="420" height="315" ng-src="{{ posts.embeded_url }}" frameborder="0" allowfullscreen></iframe>
-        <p>{{ posts.description }}</p>
-
+    <div class="container">
+    <iframe width="420" height="315" ng-src="{{ posts.embeded_url }}" frameborder="0" allowfullscreen></iframe>
+    <div class="right">
+      <h2>{{ posts.name }}</h2>
+      <p>{{ posts.description }}</p>
+    </div>
+    </div>
   </div>
 
   <p>Post to {{ LocationsShowViewModel.myData.name }}</p>

@@ -39,3 +39,20 @@ footer {
   margin: 0;
   padding-top: 20px;
 }
+
+.right {
+  width: 50vw;
+  float: right;
+}
+
+.container {
+  margin-top: 50px;
+}
+
+.right > h2 {
+  margin: 0;
+  padding: 0;
+}
+/*iframe {
+  float: left;
+}*/
