@@ -1,5 +1,3 @@
-var Location     = require('./models/location');
-
 module.exports = function(app, passport) {
 
   // HOME PAGE (with Login Links) =======

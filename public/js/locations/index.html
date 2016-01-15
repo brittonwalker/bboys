@@ -1,25 +1,15 @@
-<div class="search">
-  <h1>Search for Spots</h1>
-  <label>Search: </label>
-  <input ng-model="search" placeholder="Spot name/address" autofocus>
-</div>
+<div class="index">
 
-<div>
+  <div class="search">
+    <h1>Search for Spots</h1>
+    <label>Search: </label>
+    <input ng-model="search" placeholder="Spot name/address" autofocus>
+  </div>
+
+
   <div ng-repeat="data in LocationsIndexViewModel.mydata | filter: search">
     <h1><a data-ui-sref="locationsShow({id: data._id})">{{ data.name }}</a></h1>
     <h3>{{ data.address }}</h3>
-    <div ng-repeat="posts in data.posts">{{posts.video_url}}
-      <!-- <form>
-          <div>
-            <label>Name</label>
-            <input type="text" name="name" placeholder="Name of Video">
-            <label>Video URL</label>
-            <input type="text" name="video_url" placeholder="www.youtube.com/sickvideo">
-            <label>Description</label>
-            <input type="text" name="description" placeholder="heres a little description of this video....">
-          </div>
-          <button type="submit" id="form">Submit</button>
-        </form> -->
-    </div>
+
   </div>
 </div>

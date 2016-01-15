@@ -1,3 +1,41 @@
 #map {
   height: 500px;    /* Let's give our map a height so we can see it. */
 }
+
+.header {
+  margin: 0;
+  padding: 0;
+  height: 80px;
+  background: black;
+}
+
+.header p {
+  color: white;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+.index {
+  margin: 0 auto;
+  width: 80vw;
+}
+
+footer {
+  height: 100px;
+  background-color: black;
+  color: white;
+}
+
+.foot {
+  margin: 0 auto;
+  width: 600px;
+  padding-top: 30px;
+}
+
+.title {
+  color: white;
+  margin: 0;
+  padding-top: 20px;
+}
