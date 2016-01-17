@@ -12,8 +12,6 @@ var session       = require('express-session');
 
 var configDB = require('./config/database.js');
 
-
-
 // configuration ==================================
 mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/skate');
 require('./config/passport')(passport); // pass passport for configuration
