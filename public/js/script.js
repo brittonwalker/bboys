@@ -5,7 +5,7 @@ $(document).ready(function() {
 
   // set up map tiling
   L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    attribution: 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://mapbox.com">Mapbox</a>',
     maxZoom: 18,
     id: 'brittonwalker.okh8c6b8',
     accessToken: 'pk.eyJ1IjoiYnJpdHRvbndhbGtlciIsImEiOiJjaWozOG16d3IwMDN0dW1rcDU3OXJxeWEzIn0.yfclBrxnvpCzJZkZtLYQdg'
@@ -16,7 +16,7 @@ $(document).ready(function() {
 
     var keyword = $("input").val();
     console.log(keyword);
-    var url = 'http://api.opencagedata.com/geocode/v1/json?q=' + keyword + '&key=9856c49448b1c927e9fd4080d7c55fad';
+    var url = 'https://api.opencagedata.com/geocode/v1/json?q=' + keyword + '&key=9856c49448b1c927e9fd4080d7c55fad';
 
     $.ajax({
       url: url,
@@ -44,7 +44,7 @@ $(document).ready(function() {
         lat: data.results[0].geometry.lat,
         long: data.results[0].geometry.lng
       };
-      var url = 'http://localhost:3000/api/locations'
+      var url = 'https://localhost:3000/api/locations'
       $.ajax({
         url: url,
         type: "POST",
@@ -58,7 +58,7 @@ $(document).ready(function() {
 
   // place markers from database
   var getInfo = function() {
-    var url = 'http://localhost:3000/api/locations'
+    var url = 'https://localhost:3000/api/locations'
     $.ajax({
       url: url,
       type: "GET",
@@ -81,7 +81,7 @@ $(document).ready(function() {
 
     $.ajax({
         type: 'POST',
-        url: 'http://localhost:3000/api/locations/5696ce1876a82787d519c5c1/posts',
+        url: 'https://localhost:3000/api/locations/5696ce1876a82787d519c5c1/posts',
         data: formData,
         dataType: 'json',
         encode: true

@@ -44,12 +44,7 @@
       })
         .success(function(data) {
           console.log(data);
-          // if (!data.success) {
-          //   $scope.errorName = data.errors.name
-          // } else {
-          //   $scope.message = data.message;
-          // }
-          $state.go("locationsShow")
+          $state.go("locationsShow") //need to redirect on sucess
         })
     };
 
