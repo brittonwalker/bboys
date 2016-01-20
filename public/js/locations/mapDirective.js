@@ -47,11 +47,8 @@
           dataType: 'json'
         }).done(function(res) {
           for (var i = 0; i < res.length; i++) {
-            console.log(res[i]);
             var mark = L.marker([res[i].lat, res[i].long]).addTo(myMap);
-            console.log(mark);
             mark.bindPopup("<b>" + "<a href='/#/" + res[i]._id + "' >" + res[i].name + "</a></b><br>");
-            console.log('sup');
           }
         })
       };
@@ -69,15 +66,14 @@
       function createInput() {
         $('#saveLocation').on('click', function() {
           event.preventDefault();
-          console.log('sup bitch');
           var url = 'http://localhost:3000/api/locations';
-          console.log(formData);
           var formData = {
             'name': $('input[name=name]').val(),
             'lat': $('#location-select').find(":selected").data("lat"),
             'long': $('#location-select').find(":selected").data("lng"),
             'address': $('#location-select').find(":selected").val()
           };
+          console.log(formData);
           $.ajax({
             url: url,
             type: "POST",
@@ -85,13 +81,9 @@
             data: formData
           }).done(function(res) {
             console.log(res);
-            getInfo();
           })
         });
-
       }
-
-
 
       myMap.scrollWheelZoom.disable();
       myMap.touchZoom.disable();
