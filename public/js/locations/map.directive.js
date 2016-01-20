@@ -48,7 +48,7 @@
         }).done(function(res) {
           for (var i = 0; i < res.length; i++) {
             var mark = L.marker([res[i].lat, res[i].long]).addTo(myMap);
-            mark.bindPopup("<b>" + "<a href='/#/" + res[i]._id + "' >" + res[i].name + "</a></b><br>");
+            mark.bindPopup("<b><a href='/#/" + res[i]._id + "'>" + res[i].name + "</a></b><br>");
           }
         })
       };
@@ -60,10 +60,10 @@
         var lng = $(this).find(":selected").data("lng")
         var mark = L.marker([lat, lng]).addTo(myMap.setView([lat, lng], 13));
         mark.bindPopup('<input id="name" name="name" type="text" placeholder="name place"><button id="saveLocation">Save</button>').openPopup();
-        createInput();
+        createInput(mark);
       })
 
-      function createInput() {
+      function createInput(mark) {
         $('#saveLocation').on('click', function() {
           event.preventDefault();
           var url = 'http://localhost:3000/api/locations';
@@ -81,9 +81,12 @@
             data: formData
           }).done(function(res) {
             console.log(res);
+            myMap.removeLayer(mark);
             getInfo();
           })
+          getInfo();
         });
+
       }
 
       myMap.scrollWheelZoom.disable();
