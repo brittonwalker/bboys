@@ -81,6 +81,7 @@
             data: formData
           }).done(function(res) {
             console.log(res);
+            getInfo();
           })
         });
       }
