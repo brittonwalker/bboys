@@ -4,6 +4,7 @@
     <h3>{{ LocationsShowViewModel.myData.address }}</h3>
   </div>
 
+
   <div ng-repeat="posts in LocationsShowViewModel.myData.posts">
     <div class="container">
     <iframe width="420" height="315" ng-src="{{ posts.embeded_url }}" frameborder="0" allowfullscreen></iframe>
@@ -38,7 +39,6 @@
     <button type="submit">Submit!</button>
   </form>
 
-  <pre>
-    {{ formData }}
-  </pre>
+  <a href="/">Back</a>
+
 </div>
