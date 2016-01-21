@@ -30,8 +30,8 @@
           if (res.results && res.results.length > 0) {
             var display = '<option value="">Locations matching "' + keyword + '"...</option>';
 
-            $.each(res.results, function(i, response) {
-              display += ['<option data-lat="' + response.geometry.lat + '" data-lng="' + response.geometry.lng + '">', response.formatted + '</option>'].join('');
+            $.each(res.results, function(i, res) {
+              display += ['<option data-lat="' + res.geometry.lat + '" data-lng="' + res.geometry.lng + '">', res.formatted + '</option>'].join('');
             })
             $('#location-select').show().html(display);
           }
@@ -82,7 +82,6 @@
           }).done(function(res) {
             console.log(res);
             myMap.removeLayer(mark);
-            getInfo();
           })
           getInfo();
         });

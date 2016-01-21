@@ -10,6 +10,7 @@
   <div ng-repeat="data in LocationsIndexViewModel.mydata | filter: search">
     <h1><a data-ui-sref="locationsShow({id: data._id})">{{ data.name }}</a></h1>
     <h3>{{ data.address }}</h3>
-
+    <button ng-click="deleteLocation(data._id)">Delete This Location</button>
   </div>
+
 </div>
