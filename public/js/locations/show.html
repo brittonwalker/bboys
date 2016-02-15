@@ -21,18 +21,15 @@
 
   <form ng-submit="processForm()">
     <div>
-      <label>Name</label>
-      <input type="text" name="name" placeholder="name of video" ng-model="formData.name">
+      <input type="text" name="name" placeholder="Name of Video" ng-model="formData.name">
     </div>
 
     <div>
-      <label>Video Link</label>
-      <input type="text" name="video_url" placeholder="video link" ng-model="formData.video_url">
+      <input type="text" name="video_url" placeholder="YouTube URL" ng-model="formData.video_url">
     </div>
 
     <div>
-      <label>Description</label>
-      <input type="text" name="description" placeholder="description of video" ng-model="formData.description">
+      <input type="text" name="description" placeholder="Description of Video" ng-model="formData.description">
     </div>
     <p ng-show="errorName">{{ errorName }}</p>
 

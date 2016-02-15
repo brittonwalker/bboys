@@ -20,12 +20,14 @@ h1 {
 .index {
   margin: 0 auto;
   width: 80vw;
+  margin-top: 20px;
 }
 
 footer {
   height: 100px;
   background-color: black;
   color: white;
+  margin-top: 20px;
 }
 
 .foot {
@@ -52,6 +54,37 @@ footer {
 .right > h2 {
   margin: 0;
   padding: 0;
+}
+
+#placeName {
+  width: 200px;
+}
+
+h1 a {
+  text-decoration: none;
+}
+
+input {
+  margin-bottom: 15px;
+  padding: 5px;
+  font-style: italic;
+  width: 300px;
+}
+
+input:focus {
+  font-style: normal;;
+}
+
+button {
+  padding: 4px 15px;
+  border: 2px solid black;
+  background: transparent;
+  border-radius: 20px;
+}
+
+button:hover {
+  background: black;
+  color: white;
 }
 /*iframe {
   float: left;
