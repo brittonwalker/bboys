@@ -75,14 +75,14 @@ input:focus {
   font-style: normal;;
 }
 
-button {
+.btn {
   padding: 4px 15px;
   border: 2px solid black;
   background: transparent;
   border-radius: 20px;
 }
 
-button:hover {
+.btn:hover {
   background: black;
   color: white;
 }

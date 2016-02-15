@@ -27,6 +27,7 @@
           type: "GET",
           dataType: "json"
         }).done(function(res) {
+          console.log('what')
           if (res.results && res.results.length > 0) {
             var display = '<option value="">Locations matching "' + keyword + '"...</option>';
 
