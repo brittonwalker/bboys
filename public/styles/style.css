@@ -79,3 +79,10 @@ select {
   cursor: pointer;
   color: white;
 }
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
