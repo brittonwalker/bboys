@@ -1,91 +1,81 @@
-#map {
-  height: 500px;    /* Let's give our map a height so we can see it. */
+  #map {
+  height: 500px;
+  /* Let's give our map a height so we can see it. */
 }
-
 .header {
   margin: 0;
   padding: 0;
   height: 80px;
   background: black;
 }
-
 .header p {
   color: white;
 }
-
 h1 {
   font-size: 2em;
 }
-
 .index {
   margin: 0 auto;
   width: 80vw;
   margin-top: 20px;
 }
-
 footer {
   height: 100px;
   background-color: black;
   color: white;
   margin-top: 20px;
 }
-
 .foot {
   margin: 0 auto;
   width: 600px;
   padding-top: 30px;
 }
-
 .title {
   color: white;
   margin: 0;
   padding-top: 20px;
 }
-
 .right {
   width: 50vw;
   float: right;
 }
-
 .container {
   margin-top: 50px;
 }
-
 .right > h2 {
   margin: 0;
   padding: 0;
 }
-
 #placeName {
   width: 200px;
 }
-
 h1 a {
   text-decoration: none;
 }
-
 input {
   margin-bottom: 15px;
   padding: 5px;
   font-style: italic;
   width: 300px;
 }
-
 input:focus {
-  font-style: normal;;
+  font-style: normal;
+  ;
 }
-
 .btn {
   padding: 4px 15px;
   border: 2px solid black;
   background: transparent;
   border-radius: 20px;
 }
-
 .btn:hover {
   background: black;
   color: white;
 }
-/*iframe {
-  float: left;
-}*/
+select {
+  position: relative;
+  display: block;
+  background-color: black;
+  cursor: pointer;
+  color: white;
+}
