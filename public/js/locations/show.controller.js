@@ -33,10 +33,15 @@
     }
 
     getIt();
-    
+
     $scope.formData = {};
 
-    $scope.processForm = function() {
+    $scope.processForm = function(isValid) {
+
+      if (isValid) {
+        alert('our form is amazing')
+      }
+      
       $scope.url2 = 'http://localhost:3000/api/locations/' + id + '/posts';
 
       $http({
@@ -49,11 +54,13 @@
         })
         .success(function(data) {
           console.log(data);
-          // if (!data.success) {
-          //   $scope.errorName = data.errors.name
-          // } else {
-          //   $scope.message = data.message;
-          // }
+          if (!data.success) {
+            $scope.errorName = data.errors.name;
+            $scope.errorUrl  = data.errors.video_url;
+            $scope.errorDescription = data.errors.description;
+          } else {
+            $scope.message = data.message;
+          }
           getIt();
         })
     };

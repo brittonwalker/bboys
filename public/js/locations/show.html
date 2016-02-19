@@ -17,23 +17,28 @@
 
   <p>Post to {{ LocationsShowViewModel.myData.name }}</p>
 
-  <div ng-show="message">{{ message }}</div>
+  <div id="messages" ng-show="message">{{ message }}</div>
 
-  <form ng-submit="processForm()">
+  <form name="showForm" ng-submit="processForm(showForm.$valid)" novalidate>
+    <!-- NAME  -->
     <div>
-      <input type="text" name="name" placeholder="Name of Video" ng-model="formData.name">
+      <input type="text" name="name" placeholder="Name of Video" ng-model="formData.name" ng-minlength="3" required>
+      <p class='help' ng-show='showForm.name.$error.minlength'>Video name required!</p>
     </div>
 
+    <!-- VIDEO URL -->
     <div>
-      <input type="text" name="video_url" placeholder="YouTube URL" ng-model="formData.video_url">
+      <input type="url" name="video_url" placeholder="YouTube URL" ng-model="formData.video_url" required>
+      <p class='help' ng-show='showForm.video_url.$error.url'>Please use this format https://www.youtube.com/</p>
     </div>
 
+    <!-- DESCRIPTION -->
     <div>
       <input type="text" name="description" placeholder="Description of Video" ng-model="formData.description">
+      <span class='help' ng-show='errorDescription'> {{ errorDescription }}</span>
     </div>
-    <p ng-show="errorName">{{ errorName }}</p>
 
-    <button class="btn" type="submit">Submit!</button>
+    <button class="btn" type="submit" ng-disabled="showForm.$invalid">Submit!</button>
   </form>
 
   <a href="/">Back</a>
