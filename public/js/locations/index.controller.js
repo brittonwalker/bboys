@@ -7,15 +7,17 @@
         '$scope',
         '$http',
         '$stateParams',
+        'MarkerService',
         LocationsIndexControllerFunction
       ]);
 
-    function LocationsIndexControllerFunction($scope, $http, $stateParams) {
+    function LocationsIndexControllerFunction($scope, $http, $stateParams, MarkerService) {
       $scope.method = "GET";
       $scope.url = 'http://localhost:3000/api/locations';
 
       var vm = this;
       vm.mydata = [];
+
 
       var getLocations = function() {
           $http.get($scope.url)
