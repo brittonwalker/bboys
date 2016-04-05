@@ -1,25 +1,39 @@
 "use strict";
 
-(function(){
-  angular
-  .module("myApp")
-  .controller("LocationsIndexController", [
-    '$scope',
-    '$http',
-    LocationsIndexControllerFunction
-  ]);
+(function() {
+    angular
+      .module("myApp")
+      .controller("LocationsIndexController", [
+        '$scope',
+        '$http',
+        '$stateParams',
+        'MarkerService',
+        LocationsIndexControllerFunction
+      ]);
 
-  function LocationsIndexControllerFunction($scope, $http){
-    $scope.method = "GET";
-    $scope.url = 'http://localhost:3000/api/locations';
+    function LocationsIndexControllerFunction($scope, $http, $stateParams, MarkerService) {
+      $scope.method = "GET";
+      $scope.url = 'http://localhost:3000/api/locations';
 
-    var vm = this;
-    vm.mydata = [];
+      var vm = this;
+      vm.mydata = [];
 
-    $http.get($scope.url)
-        .then(function(result) {
-          vm.mydata = result.data;
-         });
 
-  }
-}());
+      var getLocations = function() {
+          $http.get($scope.url)
+          .then(function(result) {
+            vm.mydata = result.data;
+          })};
+
+      getLocations();
+
+        $scope.deleteLocation = function(id) {
+          $http.delete('http://localhost:3000/api/locations/' + id)
+            .then(function(res) {
+              console.log(res);
+              getLocations();
+            });
+        }
+
+      }
+    }());
