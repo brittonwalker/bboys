@@ -12,13 +12,9 @@ var session       = require('express-session');
 
 var configDB = require('./config/database.js');
 
-
-
 // configuration ==================================
-// mongoose.connect(configDB.url);
 mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/skate');
 require('./config/passport')(passport); // pass passport for configuration
-// require('./config/passport')
 
 // set up the express application =================
 app.use(morgan('dev')); // log every request to the console
@@ -43,7 +39,6 @@ var router = express.Router();
 require('./app/location.routes')(router);
 app.use('/api', router);
 app.use(express.static(__dirname + '/public'));
-//routes that end in /locations
 
 // launch ==========================================
 app.listen(process.env.PORT || 3000, function(){
