@@ -35,14 +35,9 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 
 // routes ==========================================
 require('./app/routes.js')(app, passport);
-<<<<<<< HEAD
-require('./app/locationRouter')(app)
-
-=======
 var router = express.Router();
 require('./app/location.routes')(router);
 app.use('/api', router);
->>>>>>> map
 app.use(express.static(__dirname + '/public'));
 
 // launch ==========================================
