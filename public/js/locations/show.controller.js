@@ -53,12 +53,8 @@
           }
         })
         .success(function(data) {
-<<<<<<< HEAD
-          console.log(data);
-          $state.go("locationsShow") //need to redirect on sucess
-=======
+
           getIt();
->>>>>>> map
         })
     };
 
