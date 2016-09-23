@@ -27,7 +27,6 @@
           type: "GET",
           dataType: "json"
         }).done(function(res) {
-          console.log('what')
           if (res.results && res.results.length > 0) {
             var display = '<option value="">Locations matching "' + keyword + '"...</option>';
 
@@ -74,14 +73,12 @@
             'long': $('#location-select').find(":selected").data("lng"),
             'address': $('#location-select').find(":selected").val()
           };
-          console.log(formData);
           $.ajax({
             url: url,
             type: "POST",
             dataType: 'json',
             data: formData
           }).done(function(res) {
-            console.log(res);
             myMap.removeLayer(mark);
           })
           getInfo();
